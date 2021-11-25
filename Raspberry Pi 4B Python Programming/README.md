@@ -18,15 +18,13 @@ If you are using Python 2.x, run these commands:
 
     sudo apt update
     sudo apt upgrade
-    sudo apt install python-pip python-dev
-    pip install --user RPi.GPIO  
+    sudo apt install python-rpi.gpio
 
 If you are using Python 3.x, run these commands:
 
     sudo apt update
     sudo apt upgrade
-    sudo apt install python3-pip python3-dev
-    pip3 install --user RPi.GPIO   
+    sudo apt install python3-rpi.gpio
 
 ## 3. Start your first lesson
 
