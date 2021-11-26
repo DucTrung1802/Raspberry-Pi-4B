@@ -61,14 +61,42 @@ GPIO.setmode(GPIO.BOARD)
 
 ![Pins of Pi 4B](Images/1_Blink_LED_Pins_of_Pi_4B.png)
 
-### 4.3 Setup mode Input/Output for pins
+### 4.3 Setup mode Output for pins
 
 Syntax:
 ```
 GPIO.setup(pin,GPIO.OUT)
 ```
 
-<!-- No PUD_UP -->
+Variable 'pin' could be the number of pin corresponding the number in BCM option or BOARD option as above.
+
+`GPIO.OUT` means we want the 'pin' is set in Output mode. I will cover the Input mode in the next section.
+
+### 4.4 Configure the Setup() function
+
+Syntax:
+```
+def setup():
+    pass
+    # setup somthing
+```
+
+In this function, we 
+
+
+
+```
+try:
+    while True:
+        GPIO.output(26,HIGH)
+        time.sleep(0.5)
+        GPIO.output(26,LOW)
+        time.sleep(0.5)
+
+except KeyboardInterrupt: # if Ctrl C is pressed...
+    for pin in pins:
+        GPIO.output(pin,LOW)
+```
 
 
 
