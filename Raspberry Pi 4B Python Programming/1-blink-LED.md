@@ -140,8 +140,6 @@ if __name__ == '__main__':
 
 Learn more about [if __name__ == '__main__'](https://stackoverflow.com/questions/419163/what-does-if-name-main-do) in Python.
 
+<br>
 
-
-
-
-
+### Next: [2. Control LED with button](2-control-LED-with-button.md)
