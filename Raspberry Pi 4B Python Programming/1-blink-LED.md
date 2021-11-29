@@ -13,30 +13,48 @@ Blinking LED in embedded is considered as running "Hello World" in programming
 ## 3. Source code
 
 ```
+# Import necessary modules
 import RPi.GPIO as GPIO
 import time
 
 HIGH = True
 LOW = False
 
+# Set up GPIO pins
 GPIO.setmode(GPIO.BCM)
 
 pins = [26]
 for pin in pins:
     GPIO.setup(pin,GPIO.OUT)
 
-try:
-    while True:
-        GPIO.output(26,HIGH)
-        time.sleep(0.5)
-        GPIO.output(26,LOW)
-        time.sleep(0.5)
+def setup():
+    # setup somthing (do 1 time)
+    GPIO.output(26,LOW)
+    
 
-except KeyboardInterrupt: # if Ctrl C is pressed...
-    for pin in pins:
-        GPIO.output(pin,LOW)
-    # print("Program stopped and furnace shut off.") # print a clean exit message
-GPIO.cleanup()
+def loop():
+    # continuously do somthing
+    try:
+        while True:
+            GPIO.output(26,HIGH)
+            time.sleep(0.5)
+            GPIO.output(26,LOW)
+            time.sleep(0.5)
+
+    except KeyboardInterrupt: # if Ctrl C is pressed...
+        print("Program stopped and furnace shut off.") # print a clean exit message
+    GPIO.cleanup()
+
+
+def main():
+    setup()
+    loop()
+
+if __name__ == '__main__':
+    main()
+
+
+
 ```
 
 ## 4. Explanation
@@ -72,7 +90,7 @@ Variable 'pin' could be the number of pin corresponding the number in BCM option
 
 `GPIO.OUT` means we want the 'pin' is set in Output mode. I will cover the Input mode in the next section.
 
-### 4.4 Configure the Setup() function
+### 4.4 Configure the setup() function
 
 Syntax:
 ```
@@ -81,10 +99,11 @@ def setup():
     # setup somthing
 ```
 
-In this function, we 
+In this function, we initialize values and functions.
 
+### 4.5 Configure the loop() functions
 
-
+Syntax:
 ```
 try:
     while True:
@@ -94,15 +113,32 @@ try:
         time.sleep(0.5)
 
 except KeyboardInterrupt: # if Ctrl C is pressed...
-    for pin in pins:
-        GPIO.output(pin,LOW)
+    print("Program stopped and furnace shut off.") # print a clean exit message
 ```
 
+In 'try', we have while statement to continously do something. 'except' statement is used to configure board when you quit the program.
 
+### 4.6 Clean up program
 
+Syntax:
+```
+GPIO.cleanup()
+```
 
+RPi.GPIO provides a built-in function GPIO.cleanup() to clean up **all the ports you’ve used**. But be very clear what this does. **It only affects any ports you have set in the current program**. It resets any ports you have used in this program back to input mode. This prevents damage from, say, a situation where you have a port set HIGH as an output and you accidentally connect it to GND (LOW), which would short-circuit the port and possibly fry it. Inputs can handle either 0V (LOW) or 3.3V (HIGH), so it’s safer to leave ports as inputs.
 
+### 4.7 Conventional Python programming
 
+```
+def main():
+    setup()
+    loop()
+
+if __name__ == '__main__':
+    main()
+```
+
+Learn more about [if __name__ == '__main__'](https://stackoverflow.com/questions/419163/what-does-if-name-main-do) in Python.
 
 
 
