@@ -18,7 +18,7 @@ def setup():
     
 
 def loop():
-    # continuously do somthing
+    # continuously do something
     try:
         while True:
             GPIO.output(26,HIGH)
