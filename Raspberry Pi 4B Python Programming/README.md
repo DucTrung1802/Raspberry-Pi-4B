@@ -2,6 +2,8 @@
 
 In this series, I will cover all the basic work with peripherals of Raspberry Pi 4. Programmer can use either C/C++ language or Python language. There are several tutorials programmed in C and C++ in other sources; therefore, I want to focus only on Python Programming.
 
+![Raspberry Pi 4 Model B pinout](Images/Pinout_Raspberry_Pi_Model_B.png)
+
 ## 1. Prerequisites
 
 - Raspberry Pi 3B+ with OS
