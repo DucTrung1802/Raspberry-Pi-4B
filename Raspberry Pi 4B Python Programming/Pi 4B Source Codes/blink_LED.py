@@ -13,10 +13,12 @@ for pin in pins:
     GPIO.setup(pin,GPIO.OUT)
 
 def setup():
-    pass
-    # setup somthing
+    # setup somthing (do 1 time)
+    GPIO.output(26,LOW)
+    
 
 def loop():
+    # continuously do somthing
     try:
         while True:
             GPIO.output(26,HIGH)
@@ -25,9 +27,7 @@ def loop():
             time.sleep(0.5)
 
     except KeyboardInterrupt: # if Ctrl C is pressed...
-        for pin in pins:
-            GPIO.output(pin,LOW)
-        # print("Program stopped and furnace shut off.") # print a clean exit message
+        print("Program stopped and furnace shut off.") # print a clean exit message
     GPIO.cleanup()
 
 
