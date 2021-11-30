@@ -112,4 +112,4 @@ Reference: https://www.electronicwings.com/raspberry-pi/raspberry-pi-pwm-generat
 
 <br>
 
-### Next: [4. Inter-integrated circuit (I2C)](4-I2C.md)
+### Next: [4. Control DC motor with PWM](4-control-DC-motor-with-PWM.md)
